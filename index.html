@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+    //plays 5 rounds of rps and out puts the winner.
+    function game(){
+        let finalScore = 0;
+        for(i = 0; i <5 ; i++){
+            finalScore += rpsRound(window.prompt("rock, paper or scissors?"), computerPlay());
+        }
+
+        if(finalScore < 0){
+            console.log("you lose the game :c");
+        }else if(finalScore> 0){
+            console.log("you won the game!!!");
+        }else{
+            console.log("and.. thats a tie game.");
+        }
+    }
+    //this calculates the winner of the round and return a string of a massag.
+    function rpsRound(playerChoise, computerChoise){
+        playerChoise = playerChoise.toLowerCase();
+        if(playerChoise == computerChoise){
+            console.log("Tie! you both chose "+ computerChoise);
+            return 0;
+        }else if(playerChoise == "rock" && computerChoise == "scissors" || playerChoise == "paper" && computerChoise == "rock" || playerChoise == "scissors" && computerChoise == "paper"){
+            console.log("You Win " + playerChoise + " wins over " + computerChoise + "!");
+            return 1;
+        }else{
+            console.log("Your lose " + computerChoise + " wins over " + playerChoise + " good luck next time!");
+            return -1;
+        }
+    }
+    //choose Rock Paper or scissors for the computer
+    function computerPlay(){
+        let computerChoise;
+        switch(getRandomInt(3)){
+            case 0: computerChoise = "rock";
+            break;
+            case 1: computerChoise = "paper";
+            break;
+            case 2: computerChoise = "scissors";
+            break;
+            default: console.log("hay algo mal");
+        }
+        return computerChoise;
+    }
+    //choose a random number
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+</script>
+</body>
+</html>
